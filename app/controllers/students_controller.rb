@@ -13,7 +13,9 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create(student_params)
+    @student = Student.new(student_params)
+    @student.user = current_user
+    @student.save
     redirect_to students_path
   end
 
