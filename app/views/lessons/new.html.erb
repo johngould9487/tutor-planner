@@ -1,0 +1,5 @@
+<%= simple_form_for [@student, @lesson] do |f| %>
+  <%= f.input :theme %>
+  <%= f.input :date %>
+  <%= f.submit "Save new lesson", class: "btn btn-primary" %>
+<% end %>

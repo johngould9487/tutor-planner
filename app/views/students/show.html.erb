@@ -1,8 +1,10 @@
-<h1>This is a summary of <%= @student.name %>'s page</h1>
+<h1><%= @student.name %></h1>
 <p>
   <%= link_to "Details", edit_student_path(@student) %>
 </p>
+<% @student.lessons.each do |lesson| %>
+  <p><%= lesson.theme %></p>
+<% end %>
 <p>
-  <%= link_to "Back to all students", students_path %>
+  <%= link_to "New lesson", new_student_lesson_path(@student) %>
 </p>
-
