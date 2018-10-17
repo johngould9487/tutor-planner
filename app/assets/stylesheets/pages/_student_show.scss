@@ -1,0 +1,8 @@
+#left {
+
+}
+#right {
+  height: calc(100vh - 200px);
+  overflow: scroll;
+  border: 2px solid $red;
+}

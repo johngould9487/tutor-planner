@@ -1,12 +1,13 @@
 .lesson {
-  height: 175px;
+  height: 100px;
   background-size: cover !important;
   background-position: center;
   background-color: white;
   position: relative;
-  border-radius: 2px;
-  box-shadow: 0 0 2px $red;
-  margin-bottom: 30px;
+  border-bottom: 1px solid $red;
+}
+.lesson:last-child {
+  border-bottom: 0 solid $red;
 }
 .lesson-category {
   position: absolute;
@@ -26,6 +27,14 @@
   right: 10px;
   font-size: 20px;
 }
+.new-lesson {
+  color: $red;
+  transition: all 0.3s ease;
+}
+.new-lesson:hover {
+  transform: rotate(0.25turn);
+  cursor: pointer;
+}
 .lesson-button{
   transition: all 0.3s ease;
 }
@@ -44,3 +53,18 @@
     margin-bottom: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
