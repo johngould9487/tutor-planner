@@ -11,9 +11,7 @@
   <div class="lesson-buttons">
     <ul class="list-inline">
       <li class="lesson-button">
-        <%= link_to edit_student_lesson_path(student, lesson) do %>
-          <p><i class="far fa-edit"></i></p>
-        <% end %>
+        <p><i class="far fa-edit highlight-red" data-toggle="modal" data-target="#editLesson"></i></p>
       </li>
       <li class="lesson-button">
         <%= link_to student_lesson_path(student, lesson), method: :delete do %>
@@ -21,5 +19,25 @@
         <% end %>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editLesson" tabindex="-1" role="dialog" aria-labelledby="editLessonLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title highlight-red" id="editLessonLabel">Edit lesson for <%= student.name %></h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [student, lesson] do |f| %>
+          <%= f.input :theme %>
+          <%= f.input :description %>
+          <%= f.input :date %>
+          <%= f.submit "Save changes", class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

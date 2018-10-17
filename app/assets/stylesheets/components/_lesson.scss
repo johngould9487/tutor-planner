@@ -6,9 +6,6 @@
   position: relative;
   border-bottom: 1px solid $red;
 }
-.lesson:last-child {
-  border-bottom: 0 solid $red;
-}
 .lesson-category {
   position: absolute;
   top: 10px;
@@ -39,6 +36,7 @@
   transition: all 0.3s ease;
 }
 .lesson-button:hover {
+  cursor: pointer;
   transform: rotate(0.03turn);
 }
 .lesson-description {
