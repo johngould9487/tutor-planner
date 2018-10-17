@@ -6,6 +6,8 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @lessons = @student.lessons.sort_by { |lesson| lesson.date }
+    @newLesson = Lesson.new
   end
 
   def new
