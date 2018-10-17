@@ -1,10 +1,21 @@
-<h1><%= @student.name %></h1>
-<p>
-  <%= link_to "Details", edit_student_path(@student) %>
-</p>
-<% @student.lessons.each do |lesson| %>
-  <p><%= lesson.theme %></p>
-<% end %>
+<h1>
+  <%= @student.name %>
+  <%= link_to edit_student_path(@student) do %>
+    <i class="far fa-edit fa-sm"></i>
+  <% end %>
+</h1>
+<div class="row">
+  <% @student.lessons.each do |lesson| %>
+    <%= render partial: "shared/lesson", locals: { student: @student, lesson: lesson } %>
+  <% end %>
+  <div class="col-xs-12 col-sm-6">
+    <div class="lesson">
+      <div class="new-lesson-link">
+
+      </div>
+    </div>
+  </div>
+</div>
 <p>
   <%= link_to "New lesson", new_student_lesson_path(@student) %>
 </p>

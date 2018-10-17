@@ -22,6 +22,7 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    @student = Student.find(params[:student_id])
   end
 
   def update
@@ -30,16 +31,18 @@ class LessonsController < ApplicationController
   end
 
   def destroy
+    @student = Student.find(params[:student_id])
     @lesson.destroy
+    redirect_to student_path(@student)
   end
 
   private
 
   def lesson_params
-    params.require(:lesson).permit(:theme)
+    params.require(:lesson).permit(:theme, :description, :date)
   end
 
   def find_lesson
-    @lesson = lesson.find(params[:id])
+    @lesson = Lesson.find(params[:id])
   end
 end
