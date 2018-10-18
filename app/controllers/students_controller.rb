@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
   def show
     @lessons = @student.lessons.sort_by { |lesson| lesson.date }
     @newLesson = Lesson.new
+    @newStudent = Student.new
     @markers = [
       {
         lat: @student.latitude,
@@ -26,10 +27,7 @@ class StudentsController < ApplicationController
     @student.user = current_user
     @student.tag = 0
     @student.save
-    redirect_to students_path
-  end
-
-  def edit
+    redirect_to student_path(@student)
   end
 
   def update
