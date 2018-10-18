@@ -1,9 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :find_student, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @students = Student.all
-  end
+  before_action :find_student, only: [:show, :update, :destroy]
 
   def show
     @lessons = @student.lessons.sort_by { |lesson| lesson.date }
@@ -16,10 +12,6 @@ class StudentsController < ApplicationController
       }
     ]
     @student.promote_to_most_recent
-  end
-
-  def new
-    @student = Student.new
   end
 
   def create
