@@ -6,8 +6,19 @@
   overflow: scroll;
   border: 2px solid $red;
 }
-#student-details {
+.student-details {
+  position: relative;
   height: 30%;
+}
+.student-address {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.student-situation {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #map {
   width: 100%;

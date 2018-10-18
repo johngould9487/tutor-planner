@@ -1,16 +1,15 @@
 <div class="row">
   <div class="col-xs-4">
     <h1>
-      <%= @student.name %>
+      Info
       <%= link_to edit_student_path(@student) do %>
         <i class="far fa-edit fa-sm"></i>
       <% end %>
     </h1>
     <div id="left">
-      <div id="student-details">
-        <p><%= @student.situation %></p>
-        <p class="align-right">Address</p>
-        <p class="align-right"><%= @student.address %></p>
+      <div class="student-details">
+        <p class="student-situation"><%= @student.situation %></p>
+        <p class="student-address"><%= @student.formatted_address %></p>
       </div>
       <div id="map" data-markers="<%= @markers.to_json %>">
       </div>
