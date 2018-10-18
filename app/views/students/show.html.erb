@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-5">
     <h1>
-      Info
+      Student info
     </h1>
     <div id="left">
       <div class="student-details">
@@ -23,60 +23,23 @@
       <% end %>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="newLesson" tabindex="-1" role="dialog" aria-labelledby="newLessonLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title highlight-red" id="newLessonLabel">New lesson for <%= @student.name %></h4>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for [@student, @newLesson] do |f| %>
-            <%= f.input :theme %>
-            <%= f.input :description %>
-            <%= f.input :date %>
-            <%= f.submit "Save new lesson", class: "btn btn-danger" %>
-          <% end %>
-        </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="newLesson" tabindex="-1" role="dialog" aria-labelledby="newLessonLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title highlight-red" id="newLessonLabel">New lesson for <%= @student.name %></h4>
       </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="editStudentModel" tabindex="-1" role="dialog" aria-labelledby="editStudentLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="editStudentLabel">Edit <%= @student.name %>'s details</h4>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for @student do |f| %>
-            <%= f.input :name %>
-            <%= f.input :address %>
-            <%= f.input :situation %>
-            <%= f.submit "Save student", class: "btn btn-danger" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="deleteStudentModel" tabindex="-1" role="dialog" aria-labelledby="deleteStudentLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="deleteStudentLabel">Are you sure you want to delete <%= @student.name %>?</h4>
-        </div>
-        <div class="modal-body">
-          <p class="no-margin-below highlight-red align-center">
-            THIS ACTION IS IRREVERSIBLE!
-          </p>
-        </div>
-        <div class="modal-footer">
-          <%= link_to "DELETE", student_path, method: :delete, class: "btn btn-danger" %>
-        </div>
+      <div class="modal-body">
+        <%= simple_form_for [@student, @newLesson] do |f| %>
+          <%= f.input :theme %>
+          <%= f.input :description %>
+          <%= f.input :date %>
+          <%= f.submit "Save new lesson", class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
