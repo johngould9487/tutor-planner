@@ -16,7 +16,9 @@
     <div class="container">
       <%= yield %>
       <%= javascript_include_tag 'application' %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key="+ENV['GOOGLE_API']+"&callback=initMap" %>
       <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag "map" %>
     </div>
   </body>
 </html>
