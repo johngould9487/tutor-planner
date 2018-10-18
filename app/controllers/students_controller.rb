@@ -29,7 +29,11 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    redirect_to student_path(Student.first)
+    if current_user.students.count.zero?
+      redirect_to root_path
+    else
+      redirect_to student_path(Student.first)
+    end
   end
 
   private
