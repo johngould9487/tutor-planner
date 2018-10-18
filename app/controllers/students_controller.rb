@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
         lng: @student.longitude
       }
     ]
+    @student.promote_to_most_recent
   end
 
   def new
@@ -23,6 +24,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.user = current_user
+    @student.tag = 0
     @student.save
     redirect_to students_path
   end
