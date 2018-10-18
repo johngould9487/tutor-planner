@@ -8,6 +8,12 @@ class StudentsController < ApplicationController
   def show
     @lessons = @student.lessons.sort_by { |lesson| lesson.date }
     @newLesson = Lesson.new
+    @markers = [
+      {
+        lat: @student.latitude,
+        lng: @student.longitude
+      }
+    ]
   end
 
   def new
@@ -36,7 +42,7 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name, :address)
+    params.require(:student).permit(:name, :address, :situation)
   end
 
   def find_student
