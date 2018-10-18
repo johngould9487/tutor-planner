@@ -1,71 +1,73 @@
 <div class="navbar-app">
-  <!-- Left Navigation -->
   <% if user_signed_in? %>
-    <p class="navbar-link" data-toggle="modal" data-target="#newStudentModal">New student</p>
-  <% end %>
+    <!-- Left Navigation -->
+      <p class="navbar-link" data-toggle="modal" data-target="#newStudentModal">New student</p>
 
-  <!-- Right Navigation -->
-  <div class="navbar-right">
-    <div class="dropdown">
-      <div class="navbar-link navbar-item dropdown-toggle" id="navbar-student-menu"
-      data-toggle="dropdown"><%= @student.name %> <i class="fa fa-sort"></i></div>
-      <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu" style="margin-top: 22px !important;">
-        <% current_user.students.sort_by{|s| s.tag }.reverse.each do |student| %>
-        <li>
-          <%= link_to student.name, student_path(student), class: "navbar-link" %>
-        </li>
-        <% end %>
-      </ul>
+    <!-- Right Navigation -->
+    <div class="navbar-right">
+      <div class="dropdown">
+        <div class="navbar-link navbar-item dropdown-toggle" id="navbar-student-menu"
+        data-toggle="dropdown"><%= @student.name %> <i class="fa fa-sort"></i></div>
+        <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu" style="margin-top: 22px !important;">
+          <% current_user.students.sort_by{|s| s.tag }.reverse.each do |student| %>
+          <li>
+            <%= link_to student.name, student_path(student), class: "navbar-link" %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <% if user_signed_in? %>
+      <!-- Avatar with dropdown menu -->
+        <div class="navbar-item">
+          <div class="dropdown">
+            <p class="fas fa-user-tie fa-2x" class="avatar dropdown-toggle" id="navbar-profile-menu"
+            data-toggle="dropdown" ></p>
+            <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu" style="margin-top: 16px !important;">
+              <li>
+                <%= link_to "#" do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <!-- Login link (when logged out) -->
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
+      <% end %>
     </div>
+  <% end %>
+</div>
 
-    <% if user_signed_in? %>
-    <!-- Avatar with dropdown menu -->
-      <div class="navbar-item">
-        <div class="dropdown">
-          <p class="fas fa-user-tie fa-2x" class="avatar dropdown-toggle" id="navbar-profile-menu"
-          data-toggle="dropdown" ></p>
-          <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu" style="margin-top: 16px !important;">
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+<% if user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="newStudentModal" tabindex="-1" role="dialog" aria-labelledby="newStudentLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title highlight-red" id="newStudentLabel">Add new student</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @newStudent do |f| %>
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%= f.input :situation %>
+            <%= f.submit "Save new student", class: "btn btn-danger" %>
+          <% end %>
         </div>
       </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
-    <% end %>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="newStudentModal" tabindex="-1" role="dialog" aria-labelledby="newStudentLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title highlight-red" id="newStudentLabel">Add new student</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @newStudent do |f| %>
-          <%= f.input :name %>
-          <%= f.input :address %>
-          <%= f.input :situation %>
-          <%= f.submit "Save new student", class: "btn btn-danger" %>
-        <% end %>
-      </div>
     </div>
   </div>
-</div>
+<% end %>

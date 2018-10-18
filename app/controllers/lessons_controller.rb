@@ -1,16 +1,7 @@
 class LessonsController < ApplicationController
-  before_action :find_lesson, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @lessons = Lesson.all
-  end
+  before_action :find_lesson, only: [:show, :update, :destroy]
 
   def show
-  end
-
-  def new
-    @student = Student.find(params[:student_id])
-    @lesson = Lesson.new
   end
 
   def create
@@ -19,10 +10,6 @@ class LessonsController < ApplicationController
     @lesson.student = @student
     @lesson.save
     redirect_to student_path(@student)
-  end
-
-  def edit
-    @student = Student.find(params[:student_id])
   end
 
   def update
