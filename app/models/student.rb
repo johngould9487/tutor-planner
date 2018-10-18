@@ -11,4 +11,13 @@ class Student < ApplicationRecord
     response = RestClient.get(url)
     self.formatted_address = JSON.parse(response)['results'][0]['formatted_address']
   end
+
+  def promote_to_most_recent
+    self.update(tag: Student.find_most_recent.tag + 1)
+  end
+
+  def self.find_most_recent
+    tags = Student.all.map { |student| student.tag }.uniq.sort
+    tags.length == 1 ? Student.first : Student.find_by(tag: tags.last)
+  end
 end
