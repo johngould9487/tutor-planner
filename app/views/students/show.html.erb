@@ -1,10 +1,8 @@
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-5">
     <h1>
       Info
-      <%= link_to edit_student_path(@student) do %>
-        <i class="far fa-edit fa-sm"></i>
-      <% end %>
+      <i class="edit-student far fa-edit fa-sm" data-toggle="modal" data-target="#editStudentModel"></i>
     </h1>
     <div id="left">
       <div class="student-details">
@@ -15,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-8">
+  <div class="col-xs-7">
     <h1>
       Lessons
       <i class="new-lesson fas fa-plus-circle fa-sm" data-toggle="modal" data-target="#newLesson"></i>
@@ -40,6 +38,25 @@
             <%= f.input :description %>
             <%= f.input :date %>
             <%= f.submit "Save new lesson", class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="editStudentModel" tabindex="-1" role="dialog" aria-labelledby="editStudentLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="editStudentLabel">Edit <%= @student.name %>'s details</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @student do |f| %>
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%= f.input :situation %>
+            <%= f.submit "Save student", class: "btn btn-danger" %>
           <% end %>
         </div>
       </div>
