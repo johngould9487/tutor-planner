@@ -29,6 +29,7 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
+    redirect_to student_path(Student.first)
   end
 
   private
