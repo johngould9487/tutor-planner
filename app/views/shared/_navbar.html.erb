@@ -59,7 +59,11 @@
     </div>
   <% else %>
     <div class="navbar-left">
-      <%= link_to "Login", new_user_session_path %>
+      <% if params['controller'] == 'devise/sessions' && params['action'] == 'new' %>
+        <%= link_to "Sign up", new_user_registration_path %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
     </div>
   <% end %>
 </div>
