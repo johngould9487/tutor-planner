@@ -34,7 +34,7 @@
         <%= simple_form_for [student, lesson] do |f| %>
           <%= f.input :theme %>
           <%= f.input :description %>
-          <%= f.input :date %>
+          <%= f.input :date, input_html: {class: "datepicker"} %>
           <%= f.submit "Save changes", class: "btn btn-danger" %>
         <% end %>
       </div>
