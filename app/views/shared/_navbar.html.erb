@@ -1,7 +1,14 @@
 <div class="navbar-app">
+  <div class="navbar-center">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_transparent.png", alt: "logo", class: "logo-image navbar-link" %>
+    <% end %>
+  </div>
   <% if user_signed_in? %>
     <!-- Left Navigation -->
+    <div class="navbar-left">
       <p class="navbar-link" data-toggle="modal" data-target="#newStudentModal">New student</p>
+    </div>
 
     <!-- Right Navigation -->
     <div class="navbar-right">
