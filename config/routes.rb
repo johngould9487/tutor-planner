@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   resources :students, except: %i[index new edit] do
     resources :lessons, only: %i[create update destroy]
   end
-
-  resources :calendar, only: %i[show]
 end
