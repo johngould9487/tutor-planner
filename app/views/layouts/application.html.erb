@@ -13,12 +13,16 @@
     <%= render 'shared/navbar' %>
     <div class="spacer"></div>
     <%= render 'shared/flashes' %>
-    <div class="container">
+    <% unless params['controller'] == 'pages' %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
-      <%= javascript_include_tag 'application' %>
-      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key="+ENV['GOOGLE_API']+"&callback=initMap" %>
-      <%= javascript_pack_tag 'application' %>
-      <%= javascript_pack_tag "map" %>
-    </div>
+    <% end %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key="+ENV['GOOGLE_API']+"&callback=initMap" %>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag "map" %>
   </body>
 </html>

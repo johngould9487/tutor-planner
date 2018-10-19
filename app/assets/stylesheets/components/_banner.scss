@@ -1,0 +1,14 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner p {
+  font-size: 25px;
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
