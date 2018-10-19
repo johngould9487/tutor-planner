@@ -24,6 +24,11 @@
   right: 10px;
   font-size: 20px;
 }
+.new-lesson-prompt {
+  position: absolute;
+  top: 34px;
+  left: 10px;
+}
 .new-lesson {
   color: $red;
   transition: all 0.3s ease;

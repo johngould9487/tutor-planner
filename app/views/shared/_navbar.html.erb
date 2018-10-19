@@ -1,8 +1,14 @@
 <div class="navbar-app">
   <div class="navbar-center">
+    <div class="logo-left">
+      Tutor
+    </div>
     <%= link_to root_path do %>
       <%= image_tag "logo_transparent.png", alt: "logo", class: "logo-image navbar-link" %>
     <% end %>
+    <div class="logo-right">
+      Planner
+    </div>
   </div>
   <% if user_signed_in? %>
     <!-- Left Navigation -->
