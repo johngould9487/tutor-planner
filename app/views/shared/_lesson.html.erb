@@ -11,7 +11,7 @@
   <div class="lesson-buttons">
     <ul class="list-inline">
       <li class="lesson-button">
-        <p><i class="far fa-edit highlight-red" data-toggle="modal" data-target="#editLesson"></i></p>
+        <p><i class="far fa-edit highlight-red" data-toggle="modal" data-target="#editLesson<%= lesson.id %>"></i></p>
       </li>
       <li class="lesson-button">
         <%= link_to student_lesson_path(student, lesson), method: :delete do %>
@@ -23,7 +23,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="editLesson" tabindex="-1" role="dialog" aria-labelledby="editLessonLabel">
+<div class="modal fade" id="editLesson<%= lesson.id %>" tabindex="-1" role="dialog" aria-labelledby="editLessonLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
